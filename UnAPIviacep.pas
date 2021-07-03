@@ -28,76 +28,85 @@ var
   IdHTTP: TIdHTTP;
   LHandler: TIdSSLIOHandlerSocketOpenSSL;
   Json: String;
-  URL : String;
 begin
-  IdHTTP := TIdHTTP.Create();//responsavel pela chamada web
-  LHandler := TIdSSLIOHandlerSocketOpenSSL.Create(nil); //Handler necessário, pois a chamada é https (SSL)
+  IdHTTP := TIdHTTP.Create(nil);
+  LHandler := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
   IdHTTP.IOHandler := LHandler;
   LHandler.SSLOptions.SSLVersions := [sslvTLSv1, sslvTLSv1_1, sslvTLSv1_2];
+
   try
     try
-      IdHttp.IOHandler := LHandler;
-      URL := 'https://viacep.com.br/ws/' + PCEP + '/json/';  // defifinindo a URL que vai ser chamada (ex: https://viacep.com.br/ws/17202140/json/)
-      Json := IdHTTP.Get(URL);
-      RespCode := IdHTTP.ResponseCode; //recebe á resposta do servidor web
+      IdHTTP.HandleRedirects := True;
+      Json := IdHTTP.Get('https://viacep.com.br/ws/' + pCEP + '/json/');
+      RespCode := IdHTTP.ResponseCode;
     except
-      RespCode := IdHTTP.ResponseCode; //recebe á resposta do servidor web
-      exit; //se cair na excessão, interrompe a execução restante
+      RespCode := IdHTTP.ResponseCode;
+      exit;
     end;
   finally
-    FreeAndNil(LHandler);
     FreeAndNil(IdHTTP);
+    FreeAndNil(LHandler);
   end;
   LerJson(Json);
 end;
+
 constructor TAPIViacep.Create(pCEP: String);
 begin
    BuscarCep(pCEP);
 end;
+
 function TAPIViacep.GetBairro: String;
 begin
   Result := Bairro;
 end;
+
 function TAPIViacep.GetComplemento: String;
 begin
   Result := Complemento;
 end;
+
 function TAPIViacep.GetGia: String;
 begin
   Result := Gia;
 end;
+
 function TAPIViacep.GetIBGE: String;
 begin
   Result := IBGE;
 end;
+
 function TAPIViacep.GetLocalidade: String;
 begin
   Result := Localidade;
 end;
+
 function TAPIViacep.GetLogradouro: String;
 begin
   Result := Logradouro;
 end;
+
 function TAPIViacep.GetRespCode: Integer;
 begin
   Result := RespCode;
 end;
+
 function TAPIViacep.GetUF: String;
 begin
   Result := UF;
 end;
+
 function TAPIViacep.GetUnidade: String;
 begin
   Result := Unidade;
 end;
-{ Passa os valores do Json vindo da web para os fields da classe}
+
 procedure TAPIViacep.LerJson(pJson: String);
 var
   umJSONObject : TJSONObject;
 begin
   try
-    umJSONObject:= TJSONObject.ParseJSONValue(TEncoding.ASCII.GetBytes(pJson), 0) as TJSONObject; //converte string JSON em um objeto nativo do delphi do tipo TJSONObject
-    Logradouro  := umJSONObject.Get('logradouro').JsonValue.Value; //busca dentro do JsonObject o  indíce 'logradouro'; passa o valor para o Field Logradouro
+    umJSONObject:= TJSONObject.ParseJSONValue(TEncoding.ASCII.GetBytes(pJson), 0) as TJSONObject;
+    Logradouro  := umJSONObject.Get('logradouro').JsonValue.Value;
     Bairro      := umJSONObject.Get('bairro').JsonValue.Value;
     Localidade  := umJSONObject.Get('localidade').JsonValue.Value;
     Complemento := umJSONObject.Get('complemento').JsonValue.Value;

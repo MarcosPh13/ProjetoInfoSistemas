@@ -3,7 +3,8 @@ program Project1;
 uses
   Vcl.Forms,
   UACadastroCliente in 'UACadastroCliente.pas' {UCadastroCliente},
-  UnAPIviacep in 'UnAPIviacep.pas';
+  UAAPIviacep in 'UAAPIviacep.pas',
+  UASMTPMail in 'UASMTPMail.pas';
 
 {$R *.res}
 

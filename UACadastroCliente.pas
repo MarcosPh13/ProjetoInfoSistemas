@@ -3,11 +3,9 @@ unit UACadastroCliente;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.DBCtrls, Data.DB, Datasnap.DBClient, IdBaseComponent, IdComponent,
-  IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase, IdMessageClient,
-  IdSMTPBase, IdSMTP;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Mask, Vcl.DBCtrls, Data.DB, Datasnap.DBClient, IdBaseComponent, IdComponent;
 
 type
   TUCadastroCliente = class(TForm)
@@ -48,7 +46,6 @@ type
     cdsDadosCIDADE: TStringField;
     cdsDadosESTADO: TStringField;
     cdsDadosPAIS: TStringField;
-    NMSTP1: TIdSMTP;
     eEmailEnv: TLabeledEdit;
     procedure bExitClick(Sender: TObject);
     procedure bValidCEPClick(Sender: TObject);
@@ -66,7 +63,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnAPIviacep;
+uses UASMTPMail, UAAPIviacep;
 
 procedure TUCadastroCliente.bExitClick(Sender: TObject);
 begin
@@ -74,6 +71,8 @@ begin
 end;
 
 procedure TUCadastroCliente.bSaveClick(Sender: TObject);
+var
+  xSendMail: newMail;
 begin
   if (eNome.Text = '') then
   begin
@@ -178,23 +177,22 @@ begin
     cdsDadosPAIS.Value        := ePais.Text;
     cdsDados.Post;
 
-    showMessage('XML Criado com suscesso!');
-  finally
-
+    //showMessage('XML Criado com suscesso!');
+  except
+    showMessage('Houve um erro ao criar o XML!');
+    Abort;
   end;
 
-  {NMSTP1.Host := 'smtp.outlook.com';
-  NMSTP1.Port := 25;
-  NMSTP1.Username := eEmailEnv.Text;
-  NMSTP1.Connect;
+  xSendMail := newMail.Create;
+  xSendMail.messageRecipient  := eEmailEnv.Text;
+  xSendMail.messageCC         := '';
+  xSendMail.messageSubject    := 'Cadastro de Cliente';
+  xSendMail.messageFromAdress := 'marcos.p.cruz@hotmail.com';
+  xSendMail.messageBodyAdd    := 'Cadastro do cliente: '+ eNome.Text +' anexado.';
+  xSendMail.messageAttachment := cdsDados.FileName;
+  if(xSendMail.sendEmail()) then
+    xSendMail.Free;
 
-  if (not NMSTP1.Connected) then
-  begin
-    raise Exception.Create('Erro de Conexão');
-
-  end;
-
-  NMSTP1.Disconnect(True);}
   Close;
 end;
 
@@ -203,9 +201,8 @@ var
    UmAPIviacep : TAPIviacep;
 begin
   try
-      UmAPIviacep := TAPIviacep.Create(eCEP.Text);
-      //se encontrou o CEP, preenche os TEdits do form
-      if (UmAPIviacep.GetRespCode = 200 ) then
+    UmAPIviacep := TAPIviacep.Create(eCEP.Text);
+    if (UmAPIviacep.GetRespCode = 200 ) then
       begin
         eLogradouro.Text  := UmAPIviacep.GetLogradouro;
         eBairro.Text      := UmAPIviacep.GetBairro;
@@ -213,10 +210,10 @@ begin
         eCidade.Text      := UmAPIviacep.GetLocalidade;
         eEstado.Text      := UmAPIviacep.GetUF;
       end
-      else if (UmAPIviacep.GetRespCode = 400) then
+    else if (UmAPIviacep.GetRespCode = 400) then
         showMessage('CEP inválido ou não encontrado');
-   finally
-     FreeAndNil(UmAPIviacep);
+  finally
+    FreeAndNil(UmAPIviacep);
    end;
 end;
 

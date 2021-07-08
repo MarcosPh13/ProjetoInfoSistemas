@@ -102,7 +102,8 @@
             <Form>UCadastroCliente</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="UnAPIviacep.pas"/>
+        <DCCReference Include="UAAPIviacep.pas"/>
+        <DCCReference Include="UASMTPMail.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -131,7 +131,7 @@ object UCadastroCliente: TUCadastroCliente
       Height = 25
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Sair'
-      TabOrder = 14
+      TabOrder = 16
       OnClick = bExitClick
     end
     object eLogradouro: TLabeledEdit
@@ -243,7 +243,7 @@ object UCadastroCliente: TUCadastroCliente
       EditLabel.Width = 82
       EditLabel.Height = 13
       EditLabel.Caption = '*E-mail de Envio:'
-      TabOrder = 16
+      TabOrder = 14
     end
   end
   object dsDados: TDataSource
@@ -328,7 +328,7 @@ object UCadastroCliente: TUCadastroCliente
       item
         Name = 'ESTADO'
         DataType = ftString
-        Size = 2
+        Size = 20
       end
       item
         Name = 'PAIS'
@@ -386,10 +386,5 @@ object UCadastroCliente: TUCadastroCliente
       FieldName = 'PAIS'
       Size = 100
     end
-  end
-  object NMSTP1: TIdSMTP
-    SASLMechanisms = <>
-    Left = 448
-    Top = 320
   end
 end

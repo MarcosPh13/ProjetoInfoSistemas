@@ -2,10 +2,21 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2021/06/29 20:17:28.000.810,=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2021/06/29 20:18:36.000.494,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UACadastroCliente.dfm=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2021/06/29 20:18:36.000.494,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UACadastroCliente.pas=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/06/29 20:18:36.000.494,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UACadastroCliente.pas</Transaction>
+    <Transaction>2021/06/29 20:18:36.000.494,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UACadastroCliente.dfm</Transaction>
     <Transaction>2021/06/29 20:48:03.000.291,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>2021/07/01 19:42:19.000.027,=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UnAPIviacep.pas</Transaction>
-    <Transaction>2021/07/02 20:18:34.813,=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/07/02 20:18:34.000.813,=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/07/07 09:20:00.000.780,=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/07/07 09:22:47.000.004,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UASMTPMail.pas</Transaction>
+    <Transaction>2021/07/07 14:10:04.000.458,=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/07/07 14:10:59.000.785,=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UASMTPMail2.pas</Transaction>
+    <Transaction>2021/07/07 14:14:50.000.375,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UASMTPMail2.pas=</Transaction>
+    <Transaction>2021/07/07 14:29:49.000.032,=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/07/07 14:30:08.000.058,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UASMTPMail.dfm=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2021/07/07 14:30:08.000.058,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UASMTPMail.pas=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/07/07 14:37:51.000.198,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UASMTPMail.pas=</Transaction>
+    <Transaction>2021/07/07 14:38:24.000.712,=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/07/07 14:38:40.000.261,C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\UASMTPMail.pas=C:\Users\markp\OneDrive\Favoritos\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

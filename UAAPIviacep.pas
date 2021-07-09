@@ -29,17 +29,15 @@ var
   IdHTTP: TIdHTTP;
   LHandler: TIdSSLIOHandlerSocketOpenSSL;
   Response: TStringStream;
-  Json: String;
 begin
   IdHTTP := TIdHTTP.Create(nil);
   LHandler := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
-  IdHTTP.IOHandler := LHandler;
   LHandler.SSLOptions.SSLVersions := [sslvTLSv1, sslvTLSv1_1, sslvTLSv1_2];
+  IdHTTP.IOHandler := LHandler;
   Response := TStringStream.Create;
 
   try
     try
-      IdHTTP.HandleRedirects := True;
       IdHTTP.Get('https://viacep.com.br/ws/' + pCEP + '/json/', Response);
       RespCode := IdHTTP.ResponseCode;
     except

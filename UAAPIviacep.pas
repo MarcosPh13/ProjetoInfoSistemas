@@ -2,8 +2,8 @@ unit UAAPIviacep;
 
 interface
   uses
-    System.SysUtils, System.Classes, System.json, IdTCPConnection, IdTCPClient,
-    IdHTTP, IdSSLOpenSSL;
+    System.SysUtils, System.Classes, System.json, VCL.Forms, IdTCPConnection, IdTCPClient,
+    IdHTTP, IdSSLOpenSSL, IdSSLOpenSSLHeaders;
 
 type
   TAPIViacep = class
@@ -38,6 +38,7 @@ begin
 
   try
     try
+      IdOpenSSLSetLibPath(ExtractFilePath(Application.ExeName));
       IdHTTP.Get('https://viacep.com.br/ws/' + pCEP + '/json/', Response);
       RespCode := IdHTTP.ResponseCode;
     except
